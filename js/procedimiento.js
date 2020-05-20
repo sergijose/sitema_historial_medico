@@ -1,6 +1,6 @@
-//var tableprocedimiento;  //global
+var tableprocedimiento;//var tableprocedimiento;  //global
 function listar_procedimiento() {
- var   tableprocedimiento = $("#tabla_procedimiento").DataTable({  //id de la tabla
+        tableprocedimiento = $("#tabla_procedimiento").DataTable({  //id de la tabla
         "ordering": false,
         "bLengthChange": false,
         "searching": { "regex": false },
@@ -95,3 +95,69 @@ function Registro_Procedimiento(){
     })
 
 }
+
+
+
+$('#tabla_procedimiento').on('click', '.editar', function () {  //al boton recuerda le nombramos editar por eso el .
+    var data = tableprocedimiento.row($(this).parents('tr')).data(); //detecta a que fila hago click y me captura los datos en la variable data
+    if (tableprocedimiento.row(this).child.isShown()) { //cuando esta en tamaño responsivo
+        var data = tableprocedimiento.row(this).data();
+    }
+    $("#modal_editar").modal({ backdrop: 'static', keyboard: false }) //para que no me ciere el modal
+    $("#modal_editar").modal('show');
+    $("#txt_idprocedimiento").val(data.procedimiento_id);
+    $("#txt_procedimiento_actual_editar").val(data.procedimiento_nombre);
+    $("#txt_procedimiento_nuevo_editar").val(data.procedimiento_nombre);
+    $("#cbm_estatus_editar").val(data.procedimiento_estatus).trigger("change");//si trabajo con el select2
+})
+
+
+
+function Modificar_Procedimiento(){
+//vamos a llevar el actual y el nuevo,para en el sp hacer condicional
+//si el sp es igual a nuevo entonces esolo que actualize el status y si es diferente que busque en la bd si existe o no vorar un mensaje si repite existe sino registre
+var id=  $("#txt_idprocedimiento").val();
+ var procedimientoactual=$("#txt_procedimiento_actual_editar").val();
+ var procedimientonuevo=$("#txt_procedimiento_nuevo_editar").val();
+var estatus = $("#cbm_estatus_editar").val();
+
+if(id.length==0){
+Swal.fire("mensaje de advertencia","el id del campo esta vacio","warming");
+}
+if(procedimiento.length==0){
+    Swal.fire("mensaje de advertencia","debe ingresar un procedimiento","warming");
+
+}
+
+    $.ajax({
+    url:'../controlador/procedimiento/controlador_procedimiento_modificar.php',
+        type:'POST',
+        data:{
+            id:id,
+            procedimientoactual:procedimientoactual,
+            procedimientonuevo:procedimientonuevo,
+            estatus:estatus
+        }
+
+}).done(function(resp){
+    if(resp>0){
+        $("#modal_editar").modal('hide');
+
+        if(resp==1){
+            listar_procedimiento();
+            Swal.fire("Mensaje de Confirmacion","datos actualizados","success");
+        }else{
+            Swal.fire("Mensaje de advertencia","el procedimiento ya se encuenra en la bd","warning");
+        }
+
+
+    }else{
+        Swal.fire("Mensaje de error","lo sentimos nos e pudo completar la actualidazcion","error");
+    }
+
+    
+})
+
+
+}
+

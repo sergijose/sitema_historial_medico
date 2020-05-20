@@ -81,53 +81,44 @@
         </div>
     </div>
 
-
-  <!-- inicio modal editar -->
-<form autocomplete="false" onsubmit="return false"> <!-- para que no se autocomplete -->
-    <div class="modal fade" id="modal_editar" role="dialog">    <!-- id del modal editar -->
+    <div class="modal fade" id="modal_editar" role="dialog">    <!-- id del modal -->
         <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title"><b>Editar datos del Usuario</b></h4>
+        <div class="modal-content" >
+            <div class="modal-header" style="text-align:center;">
+            <button type="button" class="close" data-dismiss="modal" >&times;</button>
+            <h4 class="modal-title"><b>Editar Procedimiento </b></h4>
             </div>
             <div class="modal-body">
-                <div class="col-lg-12">  
-                    <input type="text" id="txtidusuario" hidden>
-
-                    <label for="">Usuario</label>  <!-- body del modal -->
-                    <input type="text" class="form-control" id="txtusu_editar" placeholder="Ingrese usuario" disabled><br>
+                <div class="col-lg-12"> 
+                     <input type="text" id="txt_idprocedimiento" hidden>
+                    <label for="">Nombre</label>  <!-- body del modal -->
+         
+                     <input type="text"  id="txt_procedimiento_actual_editar" placeholder="Ingrese Procedimiento medico" hidden>
+                     <input type="text" class="form-control" id="txt_procedimiento_nuevo_editar" placeholder="Ingrese Procedimiento medico">
+                     <br>
                 </div>
 
-                <div class="col-lg-12">  
-                    <label for="">Email</label>  
-                    <input type="email" class="form-control" id="txt_email_editar" placeholder="Ingrese Email">
-                    <label for=""id="emailOK_editar" style="color:red"></label>
-                    <input type="text" id="validar_email_editar" hidden>
-                </div>
                
                 <div class="col-lg-12">
-                    <label for="">Sexo</label>
-                    <select class="js-example-basic-single" name="state" id="cbm_sexo_editar" style="width:100%;">
-                        <option value="M">MASCULINO</option>
-                        <option value="F">FEMENINO</option>
+                    <label for="">Estatus</label>
+                    <select class="js-example-basic-single" name="state" id="cbm_estatus_editar" style="width:100%;">
+                        <option value="ACTIVO">ACTIVO</option>
+                        <option value="INACTIVO">INACTIVO</option>
                     </select><br><br>
                 </div>
-                <div class="col-lg-12">
-                    <label for="">Rol</label>
-                    <select class="js-example-basic-single" name="state" id="cbm_rol_editar" style="width:100%;">
-                    </select><br><br>
-                </div>
+               
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="Modificar_Usuario()"><i class="fa fa-check"><b>&nbsp;Modificar</b></i></button>
+                <button class="btn btn-primary" onclick="Modificar_Procedimiento()"><i class="fa fa-check"><b>&nbsp;Modificar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>
         </div>
     </div>
-</form>
+
+  <!-- inicio modal editar -->
+
 <script>
 
 

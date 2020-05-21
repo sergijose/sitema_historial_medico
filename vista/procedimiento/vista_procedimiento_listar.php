@@ -110,8 +110,8 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="Modificar_Procedimiento()"><i class="fa fa-check"><b>&nbsp;Modificar</b></i></button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
+     <button class="btn btn-primary" onclick="Modificar_Procedimiento()"><i class="fa fa-check"><b>&nbsp;Modificar</b></i></button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>
         </div>
@@ -123,6 +123,7 @@
 
 
 $(document).ready(function() {
+    
    listar_procedimiento();
     $('.js-example-basic-single').select2();
     

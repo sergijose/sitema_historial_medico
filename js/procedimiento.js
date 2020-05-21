@@ -124,12 +124,12 @@ var estatus = $("#cbm_estatus_editar").val();
 if(id.length==0){
 Swal.fire("mensaje de advertencia","el id del campo esta vacio","warming");
 }
-if(procedimiento.length==0){
+if(procedimientonuevo.length==0){
     Swal.fire("mensaje de advertencia","debe ingresar un procedimiento","warming");
 
 }
 
-    $.ajax({
+$.ajax({
     url:'../controlador/procedimiento/controlador_procedimiento_modificar.php',
         type:'POST',
         data:{
@@ -141,6 +141,7 @@ if(procedimiento.length==0){
 
 }).done(function(resp){
     if(resp>0){
+      
         $("#modal_editar").modal('hide');
 
         if(resp==1){

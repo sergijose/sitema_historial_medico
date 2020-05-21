@@ -32,8 +32,17 @@
 
         }
 		
-	
-		
+        
+        function Modificar_Procedimiento($id,$procedimientoactual,$procedimientonuevo,$estatus){
+            $sql = "call SP_MODIFICAR_PROCEDIMIENTO('$id','$procedimientoactual','$procedimientonuevo','$estatus')";
+			if ($consulta = $this->conexion->conexion->query($sql)) {
+				if ($row = mysqli_fetch_array($consulta)) {
+                        return $id= trim($row[0]);//para treer un dato posicion 0
+				}
+				$this->conexion->cerrar();
+			}
+
+        }
 		
 		
 

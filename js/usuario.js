@@ -236,7 +236,7 @@ function Modificar_Estatus(idusuario, estatus) {
 
 
 
-
+//para el buscador
 function filterGlobal() {
     $('#tabla_usuario').DataTable().search(
         $('#global_filter').val(),

@@ -55,6 +55,12 @@ function listar_procedimiento() {
 
 }
 
+//para el buscador del datatable
+function filterGlobal() {
+    $('#tabla_procedimiento').DataTable().search(
+        $('#global_filter').val(),
+    ).draw();
+}
 
 function AbrirModalRegistro(){
     $("#modal_registro").modal({ backdrop: 'static', keyboard: false }) //para que no me ciere el modal
@@ -85,9 +91,11 @@ function Registro_Procedimiento(){
         if(resp==1){
             $("#modal_registro").modal('hide');//para cerrar
             listar_procedimiento();
+            LimpiarDatos();
             Swal.fire("Mensaje de Confirmacion","Datos Guardados Correctamente","success");
         }
           else{
+            LimpiarDatos();
             Swal.fire("Mensaje de Advertencia","procedimiento ya existe ","warning");
         }  
           }
@@ -111,7 +119,10 @@ $('#tabla_procedimiento').on('click', '.editar', function () {  //al boton recue
     $("#cbm_estatus_editar").val(data.procedimiento_estatus).trigger("change");//si trabajo con el select2
 })
 
+function LimpiarDatos(){
+$("#txt_procedimiento").val("");
 
+}
 
 function Modificar_Procedimiento(){
 //vamos a llevar el actual y el nuevo,para en el sp hacer condicional

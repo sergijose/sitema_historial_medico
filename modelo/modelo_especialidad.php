@@ -21,8 +21,8 @@
 			}
         }
 
-        function Registrar_Insumo($insumo,$stock,$estatus){
-            $sql = "call SP_REGISTRAR_INSUMO('$insumo','$stock','$estatus')";
+        function Registrar_Especialidad($especialidad,$estatus){
+            $sql = "call SP_REGISTRAR_ESPECIALIDAD('$especialidad','$estatus')";
 			if ($consulta = $this->conexion->conexion->query($sql)) {
 				if ($row = mysqli_fetch_array($consulta)) {
                         return $id= trim($row[0]);//para treer un dato posicion 0
@@ -33,8 +33,8 @@
         }
 		
         
- function Modificar_Insumo($id,$insumoactual,$insumonuevo,$stock,$estatus){
-            $sql = "call SP_MODIFICAR_INSUMO('$id','$insumoactual','$insumonuevo','$stock','$estatus')";
+ function Modificar_Especialidad($id,$especialidadactual,$especialidadnueva,$estatus){
+            $sql = "call SP_MODIFICAR_ESPECIALIDAD('$id','$especialidadactual','$especialidadnueva','$estatus')";
 			if ($consulta = $this->conexion->conexion->query($sql)) {
 				if ($row = mysqli_fetch_array($consulta)) {
                         return $id= trim($row[0]);//para treer un dato posicion 0

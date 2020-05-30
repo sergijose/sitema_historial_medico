@@ -289,7 +289,25 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
             </a>
-            <!-- fin lista insumo-->
+            <!-- inicio medicamento -->
+            
+            <a onclick="cargar_contenido('contenido_principal','medicamento/vista_medicamento_listar.php')">
+              <i class="fa fa-medkit"></i> <span>Medicamento</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <!-- fin lista medicamento-->
+
+              <!-- inicio especialidad -->
+            
+              <a onclick="cargar_contenido('contenido_principal','especialidad/vista_especialidad_listar.php')">
+              <i class="fa fa-gg"></i> <span>Especialidad</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <!-- fin lista especialidad-->
           </li>
 
         </ul>

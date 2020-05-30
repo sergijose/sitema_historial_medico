@@ -1,8 +1,8 @@
-<script type="text/javascript" src="../js/insumo.js?rev=<?php echo time(); ?>"></script>
+<script type="text/javascript" src="../js/medicamento.js?rev=<?php echo time(); ?>"></script>
 <div class="col-md-12">
     <div class="box box-warning box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">MANTENIMIENTO DE INSUMO</h3>
+            <h3 class="box-title">MANTENIMIENTO DE MEDICAMENTO</h3>
 
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -24,11 +24,12 @@
                     <button class="btn btn-danger" style="width:100%" onclick="AbrirModalRegistro()"><i class="glyphicon glyphicon-plus"></i>Nuevo Registro</button>
                 </div>
             </div>
-            <table id="tabla_insumo" class="display responsive nowrap" style="width:100%">
+            <table id="tabla_medicamento" class="display responsive nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Nombre</th>
+                        <th>Alias</th>
                         <th>Stock</th>
                         <th>Fecha Registro</th>
                         <th>Estatus</th>
@@ -39,6 +40,7 @@
                     <tr>
                         <th>#</th>
                         <th>Nombre</th>
+                        <th>Alias</th>
                         <th>Stock</th>
                         <th>Fecha Registro</th>
                         <th>Estatus</th>
@@ -58,12 +60,16 @@
         <div class="modal-content">
             <div class="modal-header" style="text-align:center;">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><b>Registro de Insumo </b></h4>
+                <h4 class="modal-title"><b>Registro de Medicamento </b></h4>
             </div>
             <div class="modal-body">
                 <div class="col-lg-12">
                     <label for="">Nombre</label> <!-- body del modal -->
-                    <input type="text" class="form-control" id="txt_insumo" placeholder="Ingrese Insumo  medico" maxlength="50" onkeypress="return soloLetras(event)"><br>
+                    <input type="text" class="form-control" id="txt_medicamento" placeholder="Ingrese medicamento  " maxlength="50" onkeypress="return soloLetras(event)"><br>
+                </div>
+                <div class="col-lg-12">
+                    <label for="">Alias</label> <!-- body del modal -->
+                    <input type="text" class="form-control" id="txt_alias" placeholder="Ingrese alias" maxlength="50" onkeypress="return soloLetras(event)"><br>
                 </div>
 
                 <div class="col-lg-12">
@@ -83,7 +89,7 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="Registrar_Insumo()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
+                <button class="btn btn-primary" onclick="Registrar_Medicamento()"><i class="fa fa-check"><b>&nbsp;Registrar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>
@@ -96,16 +102,21 @@
         <div class="modal-content">
             <div class="modal-header" style="text-align:center;">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><b>Editar Insumo </b></h4>
+                <h4 class="modal-title"><b>Editar Medicamento </b></h4>
             </div>
             <div class="modal-body">
                 <div class="col-lg-12">
-                    <input type="text" id="txt_idinsumo" hidden>
+                    <input type="text" id="txtidmedicamento" hidden>
                     <label for="">Nombre</label> <!-- body del modal -->
-                    <input type="text" id="txt_insumo_actual_editar" placeholder="Ingrese Insumo  medico" maxlength="50" onkeypress="return soloLetras(event) " hidden >
-                    <input type="text" class="form-control" id="txt_insumo_nuevo_editar" placeholder="Ingrese Insumo  medico" maxlength="50" onkeypress="return soloLetras(event)" >
+                    <input type="text"  id="txt_medicamento_actual_editar" placeholder="Ingrese medicamento  " maxlength="50" onkeypress="return soloLetras(event)" hidden >
+                    <input type="text" class="form-control" id="txt_medicamento_nuevo_editar"
+                    placeholder="Ingrese medicamento  " maxlength="50" onkeypress="return soloLetras(event)" >
                     
                     <br>
+                </div>
+                <div class="col-lg-12">
+                    <label for="">Alias</label> <!-- body del modal -->
+                    <input type="text" class="form-control" id="txt_alias_editar" placeholder="Ingrese alias" maxlength="50" onkeypress="return soloLetras(event)"><br>
                 </div>
 
                 <div class="col-lg-12">
@@ -126,7 +137,7 @@
 
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" onclick="Modificar_Insumo()"><i class="fa fa-check"><b>&nbsp;Modificar</b></i></button>
+                <button class="btn btn-primary" onclick="Modificar_Medicamento()"><i class="fa fa-check"><b>&nbsp;Editar</b></i></button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"><b>&nbsp;Cerrar</b></i></button>
             </div>
         </div>
@@ -137,12 +148,12 @@
 
 <script>
     $(document).ready(function() {
-        listar_insumo();
+        listar_medicamento();
 
         $('.js-example-basic-single').select2();
 
         $("#modal_registro").on('shown.bs.modal', function() { //
-            $("#txt_insumo").focus();
+            $("#txt_medicamento").focus();
         })
     });
 

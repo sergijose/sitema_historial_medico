@@ -1,5 +1,5 @@
 <?php
-    class Modelo_Insumo{
+    class Modelo_Especialidad{
         private $conexion;
         function __construct(){
             require_once 'modelo_conexion.php';
@@ -8,8 +8,8 @@
         }
 		
        
-        function listar_insumo(){
-            $sql = "call SP_LISTAR_INSUMO()";
+        function listar_especialidad(){
+            $sql = "call SP_LISTAR_ESPECIALIDAD()";
 			$arreglo = array();
 			if ($consulta = $this->conexion->conexion->query($sql)) {
 				while ($consulta_VU = mysqli_fetch_assoc($consulta)) {

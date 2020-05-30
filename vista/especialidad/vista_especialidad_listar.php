@@ -1,8 +1,8 @@
-<script type="text/javascript" src="../js/insumo.js?rev=<?php echo time(); ?>"></script>
+<script type="text/javascript" src="../js/especialidad.js?rev=<?php echo time(); ?>"></script>
 <div class="col-md-12">
     <div class="box box-warning box-solid">
         <div class="box-header with-border">
-            <h3 class="box-title">MANTENIMIENTO DE INSUMO</h3>
+            <h3 class="box-title">MANTENIMIENTO DE ESPECIALIDAD</h3>
 
             <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -24,12 +24,11 @@
                     <button class="btn btn-danger" style="width:100%" onclick="AbrirModalRegistro()"><i class="glyphicon glyphicon-plus"></i>Nuevo Registro</button>
                 </div>
             </div>
-            <table id="tabla_insumo" class="display responsive nowrap" style="width:100%">
+            <table id="tabla_especialidad" class="display responsive nowrap" style="width:100%">
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Nombre</th>
-                        <th>Stock</th>
+                        <th>Especialidad</th>
                         <th>Fecha Registro</th>
                         <th>Estatus</th>
                         <th>Acci&oacute;n</th>
@@ -38,8 +37,7 @@
                 <tfoot>
                     <tr>
                         <th>#</th>
-                        <th>Nombre</th>
-                        <th>Stock</th>
+                        <th>Especialidad</th>
                         <th>Fecha Registro</th>
                         <th>Estatus</th>
                         <th>Acci&oacute;n</th>
@@ -137,7 +135,7 @@
 
 <script>
     $(document).ready(function() {
-        listar_insumo();
+        listar_especialidad();
 
         $('.js-example-basic-single').select2();
 

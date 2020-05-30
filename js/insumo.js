@@ -60,6 +60,23 @@ function listar_insumo() {
 
 }
 
+$('#tabla_insumo').on('click', '.editar', function () {  //al boton recuerda le nombramos editar por eso el .
+    var data = tableinsumo.row($(this).parents('tr')).data(); //detecta a que fila hago click y me captura los datos en la variable data
+    if (tableinsumo.row(this).child.isShown()) { //cuando esta en tamaño responsivo
+        var data = tableinsumo.row(this).data();
+    }
+    $("#modal_editar").modal({ backdrop: 'static', keyboard: false }) //para que no me ciere el modal
+    $("#modal_editar").modal('show');
+    $("#txt_idinsumo").val(data.insumo_id);
+    $("#txt_insumo_actual_editar").val(data.insumo_nombre);
+    $("#txt_insumo_nuevo_editar").val(data.insumo_nombre);
+    $("#txt_stock_editar").val(data.insumo_stock);
+    $("#cbm_estatus_editar").val(data.insumo_estatus).trigger("change");//si trabajo con el select2
+})
+
+
+
+
 //para el buscador del datatable
 function filterGlobal() {
     $('#tabla_insumo').DataTable().search(
@@ -110,5 +127,52 @@ function Registrar_Insumo() {
 function LimpiarCampos() {
     $("#txt_insumo").val("");
     $("#txt_stock").val("");
+
+}
+
+
+function Modificar_Insumo(){
+    var id=$("#txt_idinsumo").val();
+    var insumoactual = $("#txt_insumo_actual_editar").val();
+    var insumonuevo = $("#txt_insumo_nuevo_editar").val();
+    var stock = $("#txt_stock_editar").val();
+    var estatus = $("#cbm_estatus_editar").val();
+
+    if (stock < 0) {
+        Swal.fire("Mensaje de advertencia", "el stock no puede ser negativo", "warning");
+    }
+    if (insumoactual.length == 0 ||insumonuevo.length==0  ||stock.length == 0 || estatus.length == 0) {
+        Swal.fire("Mensaje de advertencia", "llene los campos vacios", "warning");
+    }
+
+    $.ajax({
+        "url": "../controlador/insumo/controlador_insumo_modificar.php",
+        type: 'POST',
+        data: {
+            id:id,
+            inac:insumoactual,
+            innu:insumonuevo,
+            st: stock,
+            es: estatus
+        }
+
+    }).done(function (resp) {
+        
+        if (resp > 0) {
+            if (resp == 1) {
+                $("#modal_editar").modal('hide');
+                listar_insumo();
+                
+                Swal.fire("Mensaje de Confirmacion", "datos actualizados", "success");
+            } else {
+                Swal.fire("Mensaje de advertencia", "el insumo ya se encuentra en la bd", "warning");
+            }
+
+        } else {
+            
+            Swal.fire("Mensaje de Error", "No se pudo actualizar", "error");
+        }
+
+    })
 
 }

@@ -268,6 +268,15 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
         <ul class="sidebar-menu" data-widget="tree">
           <li class="header">MAIN NAVIGATION</li>
           <li class="active treeview">
+            <!-- inicio medico-->
+          <a onclick="cargar_contenido('contenido_principal','medico/vista_medico_listar.php')">
+              <i class="fa fa-user-md"></i> <span>Medico</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+          <!-- fin de medico-->
+            
             <a onclick="cargar_contenido('contenido_principal','usuario/vista_usuario_listar.php')">
               <i class="fa fa-users"></i> <span>Usuario</span>
               <span class="pull-right-container">
@@ -641,7 +650,7 @@ if (!isset($_SESSION['S_IDUSUARIO'])) {
   function soloLetras(e){
       key = e.keyCode || e.which;
       tecla = String.fromCharCode(key).toLowerCase();
-      letras = "áéíóúabcdefghijklmnñopqrstuvwxyz";
+      letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
       especiales = "8-37-39-46";
       tecla_especial = false
       for(var i in especiales){
